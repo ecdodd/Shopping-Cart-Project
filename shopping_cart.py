@@ -28,10 +28,17 @@ products = [
 # CAPTURE USER INPUTS
 #
 
+product_ids = []
+
 while True:
     product_id = input("Please input a valid product identifier, or 'DONE' if there are no more items:")
     if product_id != "DONE":
-        print("THE PRODUCT IDENTIFIER IS: " + str(product_id))
+        product_ids.append(int(product_id))
     else:
-        print("THANKS ALL DONE HERE")
         break
+
+def lookup_product_by_id(product_id):
+    matching_products = [product for product in products if product["id"] == product_id]
+    return matching_products[0]
+
+print("SHOPPING CART IDENTIFIERS INCLUDE:", product_ids)
