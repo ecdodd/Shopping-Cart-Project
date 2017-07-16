@@ -1,3 +1,4 @@
+
 import datetime
 
 # Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
@@ -28,6 +29,46 @@ products = [
 # CAPTURE USER INPUTS
 #
 
+product_ids = []
+
 while True:
-    product_id = input("Please input a valid product identifier:")
-    print("THE PRODUCT IDENTIFIER IS: " + str(product_id))
+    product_id = input("Please input a product identifier, or 'DONE' if there are no more items: ")
+    if product_id == "DONE":
+        break
+    else:
+        product_ids.append(int(product_id))
+
+def lookup_product_by_id(product_id):
+    matching_products = [product for product in products if product["id"] == product_id]
+    return matching_products[0] # because the line above gives us a list and we want to return a single item.
+
+#
+# PRINT RECEIPT
+#
+
+running_total = 0
+
+print("-------------------------------")
+print("MY GROCERY STORE")
+print("-------------------------------")
+print("Web: www.ShopSmart.com")
+print("Phone: 1.255.987.9876")
+print("Checkout Time: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%m:%S"))
+
+print("-------------------------------")
+print("Shopping Cart Items:")
+for product_id in product_ids:
+    product = lookup_product_by_id(product_id)
+    running_total += product["price"]
+    price_usd = ' (${0:.2f})'.format(product["price"])
+    print(" + " + product["name"] + price_usd)
+
+print("-------------------------------")
+print("Subtotal:", '${0:.2f}'.format(running_total))
+tax = running_total * 0.08875
+print("Plus NYC Sales Tax (8.875%):", '${0:.2f}'.format(tax))
+total = running_total + tax
+print("Total:", '${0:.2f}'.format(total))
+
+print("-------------------------------")
+print("Thanks for your business! Please come again.")
