@@ -29,5 +29,9 @@ products = [
 #
 
 while True:
-    product_id = input("Please input a valid product identifier:")
-    print("THE PRODUCT IDENTIFIER IS: " + str(product_id))
+    product_id = input("Please input a valid product identifier, or 'DONE' if there are no more items:")
+    if product_id != "DONE":
+        print("THE PRODUCT IDENTIFIER IS: " + str(product_id))
+    else:
+        print("THANKS ALL DONE HERE")
+        break
