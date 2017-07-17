@@ -47,7 +47,7 @@ def lookup_product_by_id(product_id):
 
 running_total = 0
 
-product_ids = [2]
+product_ids = [1, 8, 6, 16, 6]
 
 print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
 
