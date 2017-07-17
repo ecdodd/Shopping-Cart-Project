@@ -28,17 +28,33 @@ products = [
 # CAPTURE USER INPUTS
 #
 
-product_ids = []
+#product_ids = []
 
-while True:
-    product_id = input("Please input a valid product identifier, or 'DONE' if there are no more items:")
-    if product_id != "DONE":
-        product_ids.append(int(product_id))
-    else:
-        break
-
+#while True:
+#    product_id = input("Please input a valid product identifier, or 'DONE' if there are no more items:")
+#    if product_id != "DONE":
+#        product_ids.append(int(product_id))
+#    else:
+#        break
+#
 def lookup_product_by_id(product_id):
     matching_products = [product for product in products if product["id"] == product_id]
     return matching_products[0]
 
-print("SHOPPING CART IDENTIFIERS INCLUDE:", product_ids)
+#
+# PRINT RECEIPT
+#
+
+running_total = 0
+
+product_ids = [2]
+
+print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
+
+for product_id in product_ids:
+    product = lookup_product_by_id(product_id)
+    running_total += product["price"]
+    price_usd = ' (${0:.2f})'.format(product["price"])
+    print(" + " + product["name"] + price_usd)
+
+#TODO: peform product look-ups here!
