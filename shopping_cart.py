@@ -57,4 +57,4 @@ for product_id in product_ids:
     price_usd = ' (${0:.2f})'.format(product["price"])
     print(" + " + product["name"] + price_usd)
 
-#TODO: peform product look-ups here!
+print('${0:.2f}'.format(running_total))
